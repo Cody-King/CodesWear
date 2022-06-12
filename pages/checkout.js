@@ -8,7 +8,7 @@ const Checkout = ({cart, addToCart, removeFromCart, subTotal}) => {
         <div>
             <h1 className='text-center text-4xl mt-10 font-semibold text-gray-700'>Checkout</h1>
             <h1 className='absolute left-[16.5rem] text-xl mt-16'>1. Delivery Details</h1>
-            <div className="container px-5 pb-20 pt-28 mx-auto">
+            <div className="container px-5 pb-[3rem] pt-28 mx-auto">
                 <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
                 <div className="relative flex-grow w-full">
                     <label htmlFor="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
@@ -46,12 +46,12 @@ const Checkout = ({cart, addToCart, removeFromCart, subTotal}) => {
                 </div>
                 </div>
             </div>
-            {/* <h1 className='absolute left-[16.5rem] text-xl mt-16'>2.Review Cart Items</h1> */}
+            <h1 className='relative left-[17%] text-xl mb-5'>2.Review Cart Items and Pay</h1>
             <div className="relative flex flex-row">
                     <div className="relative px-10 py-10 w-[66%] left-[17%] shadow-2xl bg-white lg:items-start items-center">
                     {Object.keys(cart).length == 0 && <div className='mt-5 text-center'>Your cart is empty!</div>}
                     {Object.keys(cart).map((k)=>{return <div key={k} className="flex flex-row">
-                        <h2 className="text-gray-900 text-lg title-font font-medium mb-3">{cart[k].name}</h2>
+                        <h2 className="text-gray-900 text-lg title-font font-medium mb-3">{cart[k].name}({cart[k].size}/{cart[k].variant})</h2>
                         <a className="relative flex flex-row left-[25rem] text-indigo-500 items-center"><AiFillPlusCircle onClick={()=>{addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)}}className='cursor-pointer' />&nbsp;{cart[k].qty}&nbsp; <AiFillMinusCircle onClick={()=>{removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant)}} className='cursor-pointer' />
                         </a>
                     </div>})}
